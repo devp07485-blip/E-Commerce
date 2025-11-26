@@ -1,0 +1,144 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Dropdown
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                </li>
+            </ul>
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
+<div id="carouselExampleCaptions" class="carousel slide">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+            aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%2Fid%2FOIP.LR8GqhDt4Vyw38heGneHPQHaE8%3Fpid%3DApi&f=1&ipt=f1bdad20ee37af3569bfb248dfb3bdd6be6888e917e91d9bbf67bd1a71552899&ipo=images"
+                class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>First slide label</h5>
+                <p>Some representative placeholder content for the first slide.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%2Fid%2FOIP.B39-1EvwOFXOffOfIKZT0AHaEK%3Fpid%3DApi&f=1&ipt=991cfeb49f8c9840d1aeec9a180cda98509e74fb19c553e794a20e2914815d25&ipo=images"
+                class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Second slide label</h5>
+                <p>Some representative placeholder content for the second slide.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%2Fid%2FOIP.Q1xjNu2aiblEeOSQ20HuQgHaEy%3Fpid%3DApi&f=1&ipt=0a10f331d25ad0daaa6467d72628ee624fb1366347efae812deb8266153bd86f&ipo=images"
+                class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Third slide label</h5>
+                <p>Some representative placeholder content for the third slide.</p>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+<div class="Latest">
+    <h3><b>Latest</b> Arrival</h3>
+    <div class="Arr">
+        <div class="First">
+            <div class="Product_1" *ngFor="let p of Product_Name">
+                <img [src]="p.imageUrl" [srcset]="p.imageSet" alt="">
+                <div class="Name">{{ p.name }}</div>
+            </div>
+        </div>
+        <div class="First_1">
+            <div class="Product_1" *ngFor="let p of Product_Name">
+                <img [src]="p.imageUrl" [srcset]="p.imageSet" alt="" />
+                <div class="Name">{{ p.name }}</div>
+            </div>
+
+        </div>
+        <div class="First_2">
+            <div class="Product_1">
+                <img src="//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=165 165w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=360 360w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=533 533w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=720 720w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=940 940w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=1066 1066w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905 2284w
+                ">
+            </div>
+        </div>
+        <div class="First_3">
+            <div class="Product_1">
+                <img src="//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=165 165w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=360 360w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=533 533w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=720 720w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=940 940w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=1066 1066w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905 2284w
+                ">
+            </div>
+        </div>
+        <div class="First_4">
+            <div class="Product_1">
+                <img src="//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=165 165w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=360 360w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=533 533w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=720 720w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=940 940w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=1066 1066w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905 2284w
+                ">
+            </div>
+        </div>
+        <div class="First_5">
+            <div class="Product_1">
+                <img src="//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=165 165w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=360 360w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=533 533w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=720 720w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=940 940w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=1066 1066w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905 2284w
+                ">
+            </div>
+        </div>
+        <div class="First_5">
+            <div class="Product_1">
+                <img src="//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=165 165w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=360 360w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=533 533w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=720 720w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=940 940w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=1066 1066w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905 2284w
+                ">
+            </div>
+        </div>
+        <div class="First_5">
+            <div class="Product_1">
+                <img src="//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=165 165w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=360 360w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=533 533w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=720 720w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=940 940w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=1066 1066w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905 2284w
+                ">
+            </div>
+        </div>
+        <div class="First_5">
+            <div class="Product_1">
+                <img src="//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=165 165w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=360 360w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=533 533w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=720 720w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=940 940w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=1066 1066w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905 2284w
+                ">
+            </div>
+        </div>
+    </div>
+</div>
