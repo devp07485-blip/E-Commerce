@@ -5,6 +5,9 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "serve": "ng serve",
+    "build:ssr": "ng build --server",
+    "serve:ssr": "ng serve --server",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:food": "node dist/food/server/server.mjs"
@@ -46,5 +49,19 @@
     "jsdom": "^27.1.0",
     "typescript": "~5.9.2",
     "vitest": "^4.0.8"
-  }
+  },
+  "description": "This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.0.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devp07485-blip/clothe.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/devp07485-blip/clothe/issues"
+  },
+  "homepage": "https://github.com/devp07485-blip/clothe#readme"
 }

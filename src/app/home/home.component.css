@@ -58,7 +58,6 @@
     overflow-x: scroll;
     overflow-y: hidden;
     grid-template-columns: repeat(13, 1fr);
-    gap: 3vh;
     margin-top: 40px;
 }
 
@@ -68,7 +67,6 @@
 }
 
 .Product_1 {
-    border-style: solid;
     width: 31vh;
     border-radius: 5px;
 }
@@ -82,4 +80,25 @@
 
 .First {
     margin-left: 10vh;
+}
+
+.Name {
+    font-size: 3vh;
+    text-align: center;
+}
+
+.Price {
+    text-align: center;
+    font-size: 2vh;
+}
+
+.Hi {
+    text-align: center;
+    display: flex;
+    height: 7vh;
+    width: 15vh;
+    justify-content: center;
+    align-items: anchor-center;
+    margin-top: 2vh;
+    margin-left: 8vh;
 }

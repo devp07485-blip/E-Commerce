@@ -85,60 +85,17 @@
 <div class="Latest">
     <h3><b>Latest</b> Arrival</h3>
     <div class="Arr">
-        <div class="First">
-            <div class="Product_1" *ngFor="let p of Product_Name">
-                <img [src]="p.imageUrl" [srcset]="p.imageSet" alt="">
+        <div class="First" *ngFor="let p of products">
+            <div class="Product_1">
+                <img [src]="p.imageUrl" [alt]="p.name" />
                 <div class="Name">{{ p.name }}</div>
-            </div>
-        </div>
-        <div class="First_1">
-            <div class="Product_1" *ngFor="let p of Product_Name">
-                <img [src]="p.imageUrl" [srcset]="p.imageSet" alt="" />
-                <div class="Name">{{ p.name }}</div>
-            </div>
-
-        </div>
-        <div class="First_2">
-            <div class="Product_1">
-                <img src="//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=165 165w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=360 360w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=533 533w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=720 720w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=940 940w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=1066 1066w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905 2284w
-                ">
-            </div>
-        </div>
-        <div class="First_3">
-            <div class="Product_1">
-                <img src="//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=165 165w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=360 360w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=533 533w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=720 720w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=940 940w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=1066 1066w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905 2284w
-                ">
-            </div>
-        </div>
-        <div class="First_4">
-            <div class="Product_1">
-                <img src="//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=165 165w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=360 360w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=533 533w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=720 720w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=940 940w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=1066 1066w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905 2284w
-                ">
-            </div>
-        </div>
-        <div class="First_5">
-            <div class="Product_1">
-                <img src="//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=165 165w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=360 360w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=533 533w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=720 720w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=940 940w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=1066 1066w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905 2284w
-                ">
-            </div>
-        </div>
-        <div class="First_5">
-            <div class="Product_1">
-                <img src="//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=165 165w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=360 360w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=533 533w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=720 720w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=940 940w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=1066 1066w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905 2284w
-                ">
-            </div>
-        </div>
-        <div class="First_5">
-            <div class="Product_1">
-                <img src="//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=165 165w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=360 360w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=533 533w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=720 720w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=940 940w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=1066 1066w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905 2284w
-                ">
-            </div>
-        </div>
-        <div class="First_5">
-            <div class="Product_1">
-                <img src="//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=165 165w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=360 360w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=533 533w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=720 720w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=940 940w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905&width=1066 1066w,//www.pehrin.com/cdn/shop/files/B115F1DA-EEC2-4157-93DE-6DA77B381D62.jpg?v=1763479905 2284w
-                ">
+                <div class="Price">{{ p.price | currency:'INR' }}</div>
+                <button class="Hi" [routerLink]="['/details', p.id]">Details</button>
             </div>
         </div>
     </div>
+</div>
+
+<div class="Latest Arrival">
+    <h3><b>Latest </b>Arrival</h3>
 </div>
