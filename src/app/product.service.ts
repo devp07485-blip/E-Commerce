@@ -23,6 +23,10 @@ export class ProductService {
     );
   }
 
+  getLatestMen() {
+    return this.http.get<any[]>('http://localhost:5000/api/products_men');
+  }
+
   clearCache() {
     this.cache = null;
   }

@@ -1,0 +1,24 @@
+.cart-container {
+    margin: 20px;
+    overflow-x: auto;
+}
+
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.cart-table th,
+.cart-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.cart-table th {
+    background-color: #f4f4f4;
+}
+
+.cart-table img {
+    border-radius: 5px;
+}

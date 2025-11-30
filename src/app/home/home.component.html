@@ -35,6 +35,7 @@
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
+            <div class="Cart"><img src="https://cdn-icons-png.flaticon.com/512/3144/3144456.png"></div>
         </div>
     </div>
 </nav>
@@ -83,9 +84,9 @@
     </button>
 </div>
 <div class="Latest">
-    <h3><b>Latest</b> Arrival</h3>
+    <h3><b>Latest</b> Arrival Woman</h3>
     <div class="Arr">
-        <div class="First" *ngFor="let p of products">
+        <div class="First" *ngFor="let p of latestWomen">
             <div class="Product_1">
                 <img [src]="p.imageUrl" [alt]="p.name" />
                 <div class="Name">{{ p.name }}</div>
@@ -95,7 +96,67 @@
         </div>
     </div>
 </div>
+<h2>Latest Men</h2>
 
-<div class="Latest Arrival">
-    <h3><b>Latest </b>Arrival</h3>
+<div class="Arr">
+    <div class="First" *ngFor="let m of latestMen">
+        <div class="Product_1">
+            <img [src]="m.imageUrl" [alt]="m.name" />
+            <div class="Name">{{ m.name }}</div>
+            <div class="Price">{{ m.price | currency:'INR' }}</div>
+            <button class="Hi" [routerLink]="['/details', m.id]">Details</button>
+        </div>
+    </div>
+</div>
+
+<div class="Collection_Title">
+    <h3>Women Collections</h3>
+</div>
+<div class="Collection_Women">
+    <div class="Collection_image">
+        <img
+            src="//www.pehrin.com/cdn/shop/collections/FABB8675-712F-4340-872E-2CB63FBE709F.jpg?v=1754910343&width=1500">
+        <h4>Sleve-less Kurtis</h4>
+    </div>
+    <div class="Collection_image">
+        <img
+            src="//www.pehrin.com/cdn/shop/collections/FABB8675-712F-4340-872E-2CB63FBE709F.jpg?v=1754910343&width=1500">
+        <h4>Sleve-less Kurtis</h4>
+    </div>
+    <div class="Collection_image">
+        <img
+            src="//www.pehrin.com/cdn/shop/collections/FABB8675-712F-4340-872E-2CB63FBE709F.jpg?v=1754910343&width=1500">
+        <h4>Sleve-less Kurtis</h4>
+    </div>
+    <div class="Collection_image">
+        <img
+            src="//www.pehrin.com/cdn/shop/collections/FABB8675-712F-4340-872E-2CB63FBE709F.jpg?v=1754910343&width=1500">
+        <h4>Sleve-less Kurtis</h4>
+    </div>
+</div>
+
+<div class="Collection_Title">
+    <h3>Men Collections</h3>
+</div>
+<div class="Collection_Men">
+    <div class="Collection_image">
+        <img
+            src="//www.pehrin.com/cdn/shop/collections/FABB8675-712F-4340-872E-2CB63FBE709F.jpg?v=1754910343&width=1500">
+        <h4>Sleve-less Kurtis</h4>
+    </div>
+    <div class="Collection_image">
+        <img
+            src="//www.pehrin.com/cdn/shop/collections/FABB8675-712F-4340-872E-2CB63FBE709F.jpg?v=1754910343&width=1500">
+        <h4>Sleve-less Kurtis</h4>
+    </div>
+    <div class="Collection_image">
+        <img
+            src="//www.pehrin.com/cdn/shop/collections/FABB8675-712F-4340-872E-2CB63FBE709F.jpg?v=1754910343&width=1500">
+        <h4>Sleve-less Kurtis</h4>
+    </div>
+    <div class="Collection_image">
+        <img
+            src="//www.pehrin.com/cdn/shop/collections/FABB8675-712F-4340-872E-2CB63FBE709F.jpg?v=1754910343&width=1500">
+        <h4>Sleve-less Kurtis</h4>
+    </div>
 </div>

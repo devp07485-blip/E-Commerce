@@ -1,0 +1,22 @@
+<!-- STEP 1 -->
+<div *ngIf="step === 1">
+    <h2>Enter Email</h2>
+    <input type="email" [(ngModel)]="email" required>
+    <button (click)="nextStep()">Next</button>
+</div>
+
+<!-- STEP 2 -->
+<div *ngIf="step === 2">
+    <h2>Enter Password</h2>
+    <input type="password" [(ngModel)]="password" required>
+    <button (click)="previousStep()">Back</button>
+    <button (click)="nextStep()">Next</button>
+</div>
+
+<!-- STEP 3 -->
+<div *ngIf="step === 3">
+    <h2>Choose Username</h2>
+    <input type="text" [(ngModel)]="username" required>
+    <button (click)="previousStep()">Back</button>
+    <button (click)="submit()">Create Account</button>
+</div>

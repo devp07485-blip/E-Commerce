@@ -102,3 +102,28 @@
     margin-top: 2vh;
     margin-left: 8vh;
 }
+
+.Collection_Women {
+    display: flex;
+}
+
+.Collection_image img {
+    height: 90vh;
+    width: 53vh;
+    object-fit: contain;
+}
+
+.Collection_image h4 {
+    margin-left: 3vh;
+    margin-top: 1vh;
+}
+
+.Collection_Men {
+    display: flex;
+}
+
+.Cart img {
+    height: 5vh;
+    width: 5vh;
+    margin-left: 3vh;
+}

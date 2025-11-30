@@ -1,1 +1,18 @@
-<p>cart works!</p>
+<table>
+    <tbody>
+        <tr *ngFor="let item of cartItems">
+        </tr>
+
+        <tr *ngIf="!cartItems.length">
+            <td colspan="4">No items</td>
+        </tr>
+
+        <!-- TOTAL ROW (VALID HTML) -->
+        <tr>
+            <td colspan="3" style="text-align:right;">
+                <strong>Total:</strong>
+            </td>
+            <td>{{ getTotal() | currency:'INR':'symbol' }}</td>
+        </tr>
+    </tbody>
+</table>
