@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../services/cart.service';
-import { Product } from '../models/product.model';
+import { CartItem } from '../models/cart-item.model';
 import { CommonModule } from '@angular/common';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-cart',
@@ -12,46 +13,34 @@ import { CommonModule } from '@angular/common';
 })
 export class CartComponent implements OnInit {
 
-  cartItems: Product[] = [];
+  cartItems$: Observable<CartItem[]>;
+  totalPrice: number = 0;
 
-  constructor(private cartService: CartService) { }
-
-  ngOnInit(): void {
-    this.loadCart();
+  constructor(private cartService: CartService) {
+    this.cartItems$ = this.cartService.cart$;
   }
 
-  loadCart() {
-    this.cartItems = this.cartService.getCartItems().map((item: Product) => {
-      item.quantity = item.quantity ?? 1; // initialize if undefined
-      return item;
+  ngOnInit(): void {
+    this.cartItems$.subscribe(() => {
+      this.totalPrice = this.cartService.getTotalPrice();
     });
   }
 
-  increaseQuantity(item: Product) {
-    item.quantity! += 1;
-    this.updateCart();
+  increaseQuantity(item: CartItem) {
+    this.cartService.updateQuantity(item.id, item.quantity + 1);
   }
 
-  decreaseQuantity(item: Product) {
-    if (item.quantity! > 1) {
-      item.quantity! -= 1;
-      this.updateCart();
+  decreaseQuantity(item: CartItem) {
+    if (item.quantity > 1) {
+      this.cartService.updateQuantity(item.id, item.quantity - 1);
     }
   }
 
   removeItem(id: number) {
-    this.cartService.removeItem(id);
-    this.loadCart();
+    this.cartService.removeFromCart(id);
   }
 
-  updateCart() {
-    // update localStorage
-    localStorage.setItem('cart', JSON.stringify(this.cartItems));
-  }
-
-  getTotal(): number {
-    return this.cartItems.reduce((sum, item) => {
-      return sum + (item.price * (item.quantity ?? 1));
-    }, 0);
+  clearCart() {
+    this.cartService.clearCart();
   }
 }

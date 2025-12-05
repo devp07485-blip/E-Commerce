@@ -88,45 +88,6 @@ let users = [];
 app.get('/api/products', (req, res) => res.json(products));
 app.get('/api/products_men', (req, res) => res.json(LatestMen));
 
-// ======== SIGNUP ROUTE ========
-app.post('/api/signup', (req, res) => {
-    const { email, username, password } = req.body;
-
-    if (!email || !username || !password) {
-        return res.status(400).json({ message: 'All fields are required' });
-    }
-
-    // Check if username already exists
-    const exists = users.find(u => u.username.toLowerCase() === username.toLowerCase());
-    if (exists) {
-        return res.status(400).json({ message: 'Username already exists' });
-    }
-
-    // Add user
-    users.push({ email, username, password });
-    res.status(201).json({ message: 'Account created successfully' });
-});
-
-// ======== LOGIN ROUTE ========
-app.post('/api/login', (req, res) => {
-    const { username, password } = req.body;
-
-    const user = users.find(
-        u => u.username.toLowerCase() === username.toLowerCase() && u.password === password
-    );
-
-    if (user) {
-        res.status(200).json({ message: 'Login successful', username: user.username });
-    } else {
-        res.status(401).json({ message: 'Username or password is incorrect' });
-    }
-});
-
-// ======== START SERVER ========
-app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`);
-});
-
 app.get('/api/products/:id', (req, res) => {
     const id = parseInt(req.params.id);
     const product = products.find(p => p.id === id);
@@ -136,5 +97,49 @@ app.get('/api/products/:id', (req, res) => {
     }
 
     res.json(product);
+});
+
+// ======== SIGNUP ROUTE (email-based) ========
+app.post('/api/signup', (req, res) => {
+    const { email, username, password } = req.body;
+
+    if (!email || !username || !password) {
+        return res.status(400).json({ message: 'All fields are required' });
+    }
+
+    const exists = users.find(u => u.email.toLowerCase() === email.toLowerCase());
+
+    if (exists) {
+        return res.status(400).json({ message: 'Email already exists' });
+    }
+
+    users.push({ email, username, password });
+
+    res.status(201).json({ message: 'Account created successfully' });
+});
+
+// ======== LOGIN ROUTE (email + password) ========
+app.post('/api/login', (req, res) => {
+
+    app.use(express.json());  // REQUIRED
+
+    app.post('/api/login', (req, res) => {
+        console.log(req.body); // check what you're receiving
+        const { email, password } = req.body;
+
+        if (email === 'admin@gmail.com' && password === '123456') {
+            res.json({ message: "Login successful" });
+        } else {
+            res.status(401).json({ error: "Unauthorized" });
+        }
+    });
+
+    app.listen(5000, () => console.log("Server running"));
+
+});
+
+// ======== START SERVER ========
+app.listen(port, () => {
+    console.log(`Server running at http://localhost:${port}`);
 });
 

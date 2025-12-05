@@ -1,8 +1,10 @@
 <!-- STEP 1 -->
-<div *ngIf="step === 1">
-    <h2>Enter Email</h2>
-    <input type="email" [(ngModel)]="email" required>
-    <button (click)="nextStep()">Next</button>
+<div class="Email">
+    <div class="Step_1" *ngIf="step === 1">
+        <h2>Enter Email</h2>
+        <input type="email" [(ngModel)]="email" alt="Enter A Email" required>
+        <button class="Next" (click)="nextStep()">Next</button>
+    </div>
 </div>
 
 <!-- STEP 2 -->

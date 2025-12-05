@@ -5,11 +5,19 @@ import { MenComponent } from './men/men.component';
 import { LoginComponent } from './login/login.component'
 import { SigninComponent } from './signin/signin.component';
 import { CartComponent } from './cart/cart.component';
+import { PoohComponent } from './Type_Woman_Product/Pooh/pooh/pooh.component';
+import { NainaComponent } from './Type_Woman_Product/Naina/naina/naina.component';
+import { AllWomenComponent } from './Type_Woman_Product/All_Women/all-women/all-women.component';
+import { AishaComponent } from './Type_Woman_Product/Aisha/aisha/aisha.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
 
     { path: 'home', component: HomeComponent },
+    { path: 'pooh', component: PoohComponent },
+    { path: 'naina', component: NainaComponent },
+    { path: 'all-women', component: AllWomenComponent },
+    { path: 'aisha', component: AishaComponent },
 
     {
         path: 'details/:id',

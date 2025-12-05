@@ -1,40 +1,53 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  username = '';
-  password = '';
-  errorMessage = '';
 
-  constructor(private router: Router, private http: HttpClient) { }
+  email = '';
+  password = '';
+  loading = false;
+  errorMsg = '';
+
+  constructor(private http: HttpClient) { }
 
   login() {
-    if (!this.username || !this.password) {
-      this.errorMessage = 'Enter username and password';
+    if (!this.email || !this.password) {
+      this.errorMsg = 'Email and Password are required';
       return;
     }
 
-    this.http.post<any>('http://localhost:5000/api/login', {
-      username: this.username.trim(),
-      password: this.password.trim()
-    })
+    this.loading = true;
+    this.errorMsg = '';
+
+    const body = {
+      email: this.email,
+      password: this.password
+    };
+
+    this.http.post('http://localhost:5000/api/login', body)
       .subscribe({
-        next: () => {
-          this.errorMessage = '';
-          this.router.navigate(['/home']);
+        next: (res: any) => {
+          this.loading = false;
+
+          // Save user info
+          localStorage.setItem('email', res.email);
+          localStorage.setItem('username', res.username);
+
+          // Redirect
+          window.location.href = '/dashboard';
         },
         error: (err) => {
-          this.errorMessage = err.error?.message || 'Login failed';
+          this.loading = false;
+          this.errorMsg = err.error?.message || 'Invalid Credentials';
         }
       });
   }
