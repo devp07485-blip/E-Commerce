@@ -8,23 +8,36 @@ import { tap } from 'rxjs/operators';
 })
 export class ProductService {
 
-  private cache: any[] | null = null;  // CACHE HERE
+  private cache: any[] | null = null;
 
-  private apiUrl = 'http://localhost:5000/api/products';  // replace
+  private apiWomenList = 'http://localhost:5000/api/products';
+  private apiMenList = 'http://localhost:5000/api/products_men';
 
   constructor(private http: HttpClient) { }
 
+  // WOMEN LIST
   getProducts() {
     if (this.cache) {
       return of(this.cache);
     }
-    return this.http.get<any[]>(this.apiUrl).pipe(
+    return this.http.get<any[]>(this.apiWomenList).pipe(
       tap(data => this.cache = data)
     );
   }
 
+  // MEN LIST
   getLatestMen() {
-    return this.http.get<any[]>('http://localhost:5000/api/products_men');
+    return this.http.get<any[]>(this.apiMenList);
+  }
+
+  // WOMEN DETAILS
+  getWomenProductById(id: number) {
+    return this.http.get<any>(`${this.apiWomenList}/${id}`);
+  }
+
+  // MEN DETAILS
+  getMenProductById(id: number) {
+    return this.http.get<any>(`${this.apiMenList}/${id}`);
   }
 
   clearCache() {

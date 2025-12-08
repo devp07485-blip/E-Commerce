@@ -1,5 +1,6 @@
+// src/app/models/home.service.ts
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Product } from './product.model';
 
@@ -8,19 +9,16 @@ import { Product } from './product.model';
 })
 export class HomeService {
 
-  private apiBase = 'http://localhost:5000/api';
+  private apiWomen = 'http://localhost:5000/api/products';
+  private apiMen = 'http://localhost:5000/api/products_men';
 
   constructor(private http: HttpClient) { }
 
   getWomenProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(`${this.apiBase}/products`, {
-      headers: new HttpHeaders({ 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' })
-    });
+    return this.http.get<Product[]>(this.apiWomen);
   }
 
   getMenProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(`${this.apiBase}/products_men`, {
-      headers: new HttpHeaders({ 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' })
-    });
+    return this.http.get<Product[]>(this.apiMen);
   }
 }

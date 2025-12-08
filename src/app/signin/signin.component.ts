@@ -41,16 +41,8 @@ export class SigninComponent {
       password: this.password
     }).subscribe({
       next: () => {
-        // 2) AUTO-LOGIN AFTER SIGNUP
-        this.http.post<any>('http://localhost:5000/api/login', {
-          username: this.username,
-          password: this.password
-        }).subscribe({
-          next: () => this.router.navigate(['/home']),
-          error: (err) => {
-            this.errorMessage = 'Signup success but login failed: ' + (err.error?.message || 'Server error');
-          }
-        });
+        // Redirect to Login Page as requested
+        this.router.navigate(['/login']);
       },
       error: (err) => {
         this.errorMessage = err.error?.message || 'Signup failed, try again';

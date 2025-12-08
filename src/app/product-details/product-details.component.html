@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<!-- <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Navbar</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -38,7 +38,7 @@
             <div class="Cart"><img src="https://cdn-icons-png.flaticon.com/512/3144/3144456.png"></div>
         </div>
     </div>
-</nav>
+</nav> -->
 <div *ngIf="isLoading" class="loading">
     Loading product details...
 </div>
@@ -47,25 +47,133 @@
     {{ errorMessage }}
 </div>
 
-<div *ngIf="product" class="details-wrapper" [ngClass]="'product-' + product.id">
-    <div *ngIf="product" class="product-details">
+<div *ngIf="product" class="product-container">
+    <!-- Breadcrumbs (Simple placeholder for now) -->
+    <div class="breadcrumbs">
+        Home / {{ category | titlecase }} / {{ product.name }}
+    </div>
 
-        <div class="image-section">
-            <div class="Image_1">
-                <img [src]="product?.imageUrl" alt="{{ product?.name }}">
+    <!-- Product Grid -->
+    <div class="product-grid">
+        <!-- Left Column: Images -->
+        <div class="image-gallery">
+            <div class="main-image">
+                <img [src]="product?.imageUrl || product?.image_1" alt="{{ product.name }}">
             </div>
-            <img [src]="product?.image_1" alt="{{ product?.name }}">
-            <img [src]="product?.image_2" alt="{{ product?.name }}">
+            <div class="thumbnail-grid">
+                <img *ngIf="product.image_1" [src]="product.image_1" (click)="product.imageUrl = product.image_1">
+                <img *ngIf="product.image_2" [src]="product.image_2" (click)="product.imageUrl = product.image_2">
+                <img *ngIf="product.image_3" [src]="product.image_3" (click)="product.imageUrl = product.image_3">
+                <img *ngIf="product.image_4" [src]="product.image_4" (click)="product.imageUrl = product.image_4">
+            </div>
         </div>
 
-        <div class="info-section">
-            <h2>{{ product.name }}</h2>
-            <p class="price">₹ {{ product.price }}</p>
-            <p class="description">{{ product.description }}</p>
+        <!-- Right Column: Info -->
+        <div class="product-info">
+            <h1 class="product-title">{{ product.name }}</h1>
 
-            <button (click)="addToCart(product)">Add to Cart</button>
+            <div class="price-container">
+                <span class="current-price">Rs. {{ product.price }}</span>
+                <span class="original-price" *ngIf="product.originalPrice">Rs. {{ product.originalPrice }}</span>
+                <span class="sale-badge" *ngIf="product.originalPrice">Sale</span>
+            </div>
+            <p class="tax-note">Taxes included.</p>
 
+            <!-- Size Chart Link -->
+            <div class="size-chart-link" (click)="openSizeChart()">
+                <i class="fa fa-ruler-horizontal"></i> Size Chart
+            </div>
 
+            <!-- Size Selector -->
+            <div class="selector-group">
+                <label>Size</label>
+                <div class="size-options">
+                    <button *ngFor="let size of sizes" [class.active]="selectedSize === size"
+                        (click)="selectSize(size)">
+                        {{ size }}
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quantity Selector -->
+            <div class="selector-group">
+                <label>Quantity</label>
+                <div class="quantity-control">
+                    <button (click)="decrementQuantity()">−</button>
+                    <span>{{ quantity }}</span>
+                    <button (click)="incrementQuantity()">+</button>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="btn-add-cart" (click)="addToCart(product)">Add to cart</button>
+                <button class="btn-buy-now">Buy it now</button>
+            </div>
+
+            <!-- Description -->
+            <div class="product-description">
+                <p>{{ product.description }}</p>
+                <p><strong>How it can be paired:</strong> Mix with brown trousers for office or light leggings for
+                    casual outings.</p>
+            </div>
+
+            <div class="share-options">
+                <i class="fa fa-share-alt"></i> Share
+            </div>
         </div>
+    </div>
+
+    <!-- Related Products -->
+    <div class="related-products" *ngIf="relatedProducts.length > 0">
+        <h3>You may also like</h3>
+        <div class="related-grid">
+            <div class="related-card" *ngFor="let item of relatedProducts" [routerLink]="['/', category, item.id]">
+                <div class="img-wrapper">
+                    <span class="badge" *ngIf="item.originalPrice">Sale</span>
+                    <img [src]="item.image_1 || item.imageUrl" [alt]="item.name">
+                </div>
+                <div class="related-info">
+                    <h4>{{ item.name }}</h4>
+                    <p>Rs. {{ item.price }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Size Chart Modal -->
+<div class="modal-overlay" *ngIf="isSizeChartVisible" (click)="closeSizeChart()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+        <div class="modal-header">
+            <h3>Size Chart</h3>
+            <button class="close-btn" (click)="closeSizeChart()">&times;</button>
+        </div>
+
+        <div class="toggle-buttons">
+            <button [class.active]="sizeUnit === 'cm'" (click)="toggleSizeUnit('cm')">Cm</button>
+            <button [class.active]="sizeUnit === 'in'" (click)="toggleSizeUnit('in')">Inches</button>
+        </div>
+
+        <table class="size-table">
+            <thead>
+                <tr>
+                    <th>Size</th>
+                    <th>Bust ({{ sizeUnit }})</th>
+                    <th>Waist ({{ sizeUnit }})</th>
+                    <th>Hip ({{ sizeUnit }})</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let row of sizeChartData">
+                    <td>{{ row.size }}</td>
+                    <td>{{ sizeUnit === 'cm' ? row.bustCm : row.bustIn }}</td>
+                    <td>{{ sizeUnit === 'cm' ? row.waistCm : row.waistIn }}</td>
+                    <td>{{ sizeUnit === 'cm' ? row.hipCm : row.hipIn }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <img *ngIf="category === 'women'" src="assets/size_chart.jpeg" alt="Size Guide" class="size-chart-image">
     </div>
 </div>

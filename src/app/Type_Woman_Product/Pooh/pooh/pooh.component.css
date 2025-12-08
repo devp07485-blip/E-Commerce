@@ -1,20 +1,76 @@
-.Collection_image img {
-    height: 25vh;
-    width: 75vh;
-    object-fit: cover;
-    border-radius: 10px;
+/* Main container for the component */
+:host {
+    display: block;
+    padding: 20px;
+}
+
+.Collection_image {
+    display: flex;
+    flex-wrap: wrap;
+    /* Allow wrapping on small screens */
+    align-items: center;
+    justify-content: center;
+    /* Center content */
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
     position: relative;
-    top: 20px;
-    left: 135vh;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
+}
+
+.Collection_image img {
+    width: 100%;
+    max-width: 600px;
+    /* Limit max width */
+    height: auto;
+    /* Maintain aspect ratio */
+    min-height: 300px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
     cursor: pointer;
 }
 
+.Collection_image img:hover {
+    transform: scale(1.02);
+}
+
 .Collection_image h4 {
-    position: relative;
-    left: 10vh;
-    bottom: 15vh;
-    font-size: 6vh;
-    width: max-content
+    font-size: 3rem;
+    /* Responsive font sizing logic below */
+    font-weight: 700;
+    color: #333;
+    margin: 0;
+    text-align: center;
+    flex: 1 1 300px;
+    /* Flex basis to allow wrapping */
+}
+
+.Filter {
+    margin-top: 40px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    .Collection_image {
+        flex-direction: column-reverse;
+        /* Put text above image or keep below */
+        text-align: center;
+    }
+
+    .Collection_image h4 {
+        margin-bottom: 20px;
+        font-size: 2.5rem;
+    }
+
+    .Collection_image img {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .Collection_image h4 {
+        font-size: 2rem;
+    }
 }

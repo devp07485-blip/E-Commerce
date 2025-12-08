@@ -1,121 +1,253 @@
-<div id="carouselExampleCaptions" class="carousel slide">
+<!-- Hero Section -->
+<div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-            aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-            aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-            aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true"
+            aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
     </div>
     <div class="carousel-inner">
         <div class="carousel-item active">
             <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%2Fid%2FOIP.LR8GqhDt4Vyw38heGneHPQHaE8%3Fpid%3DApi&f=1&ipt=f1bdad20ee37af3569bfb248dfb3bdd6be6888e917e91d9bbf67bd1a71552899&ipo=images"
-                class="d-block w-100" alt="...">
+                class="d-block w-100 hero-img" alt="Hero Image 1">
             <div class="carousel-caption d-none d-md-block">
-                <h5>First slide label</h5>
-                <p>Some representative placeholder content for the first slide.</p>
+                <h5 class="hero-title">Discover Your Style</h5>
+                <p class="hero-subtitle">Premium collections for the modern you.</p>
+                <button class="btn btn-light hero-btn">Shop Now</button>
             </div>
         </div>
         <div class="carousel-item">
             <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%2Fid%2FOIP.B39-1EvwOFXOffOfIKZT0AHaEK%3Fpid%3DApi&f=1&ipt=991cfeb49f8c9840d1aeec9a180cda98509e74fb19c553e794a20e2914815d25&ipo=images"
-                class="d-block w-100" alt="...">
+                class="d-block w-100 hero-img" alt="Hero Image 2">
             <div class="carousel-caption d-none d-md-block">
-                <h5>Second slide label</h5>
-                <p>Some representative placeholder content for the second slide.</p>
+                <h5 class="hero-title">Elegant & Timeless</h5>
+                <p class="hero-subtitle">Fashion that speaks volumes.</p>
+                <button class="btn btn-light hero-btn">View Collections</button>
             </div>
         </div>
         <div class="carousel-item">
             <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%2Fid%2FOIP.Q1xjNu2aiblEeOSQ20HuQgHaEy%3Fpid%3DApi&f=1&ipt=0a10f331d25ad0daaa6467d72628ee624fb1366347efae812deb8266153bd86f&ipo=images"
-                class="d-block w-100" alt="...">
+                class="d-block w-100 hero-img" alt="Hero Image 3">
             <div class="carousel-caption d-none d-md-block">
-                <h5>Third slide label</h5>
-                <p>Some representative placeholder content for the third slide.</p>
+                <h5 class="hero-title">New Season Arrivals</h5>
+                <p class="hero-subtitle">Be the first to wear the trend.</p>
+                <button class="btn btn-light hero-btn">Explore</button>
             </div>
         </div>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
     </button>
 </div>
-<div class="Latest">
-    <h3><b>Latest</b> Arrival Woman</h3>
-    <div class="Arr">
-        <div class="First" *ngFor="let p of latestWomen">
-            <div class="Product_1">
-                <img [src]="p.imageUrl" [alt]="p.name" />
-                <div class="Name">{{ p.name }}</div>
-                <div class="Price">{{ p.price | currency:'INR' }}</div>
-                <button class="Hi" [routerLink]="['/details', p.id]">Details</button>
+
+<!-- Latest Arrivals - Women -->
+<section class="section latest-section">
+    <div class="section-header">
+        <h3 class="section-title">Latest Arrivals <span class="highlight">Women</span></h3>
+        <div class="section-line"></div>
+    </div>
+    <div class="product-grid">
+        <div class="product-card" *ngFor="let p of latestWomen">
+            <div class="image-container">
+                <img [src]="p.imageUrl" [alt]="p.name" class="product-img" />
+                <div class="overlay">
+                    <button class="btn-quick-view" [routerLink]="['/details', 'women', p.id]">Quick View</button>
+                </div>
+            </div>
+            <div class="product-details">
+                <div class="product-name">{{ p.name }}</div>
+                <div class="product-price">{{ p.price | currency:'INR' }}</div>
             </div>
         </div>
     </div>
-</div>
-<h2>Latest Men</h2>
+</section>
 
-<div class="Arr">
-    <div class="First" *ngFor="let m of latestMen">
-        <div class="Product_1">
-            <img [src]="m.imageUrl" [alt]="m.name" />
-            <div class="Name">{{ m.name }}</div>
-            <div class="Price">{{ m.price | currency:'INR' }}</div>
-            <button class="Hi" [routerLink]="['/details', m.id]">Details</button>
+<!-- Latest Arrivals - Men -->
+<section class="section latest-section bg-light">
+    <div class="section-header">
+        <h3 class="section-title">Latest <span class="highlight">Men</span></h3>
+        <div class="section-line"></div>
+    </div>
+    <div class="product-grid">
+        <div class="product-card" *ngFor="let m of latestMen">
+            <div class="image-container">
+                <img [src]="m.imageUrl" [alt]="m.name" class="product-img" />
+                <div class="overlay">
+                    <button class="btn-quick-view" [routerLink]="['/details', 'men', m.id]">Quick View</button>
+                </div>
+            </div>
+            <div class="product-details">
+                <div class="product-name">{{ m.name }}</div>
+                <div class="product-price">{{ m.price | currency:'INR' }}</div>
+            </div>
         </div>
     </div>
-</div>
+</section>
 
-<div class="Collection_Title">
-    <h3>Women Collections</h3>
-</div>
-<div class="Collection_Women">
-    <div class="Collection_image" href="../pooh">
-        <img
-            src="//www.pehrin.com/cdn/shop/collections/FABB8675-712F-4340-872E-2CB63FBE709F.jpg?v=1754910343&width=1500">
-        <h4>Sleve-less Kurtis</h4>
+<!-- Women Collections -->
+<section class="section collections-section">
+    <div class="section-header">
+        <h3 class="section-title cursive-font">Women Collections</h3>
     </div>
-    <div class="Collection_image">
-        <img
-            src="//www.pehrin.com/cdn/shop/collections/FABB8675-712F-4340-872E-2CB63FBE709F.jpg?v=1754910343&width=1500">
-        <h4>Sleve-less Kurtis</h4>
+    <div class="collection-grid">
+        <div class="collection-item">
+            <img src="//www.pehrin.com/cdn/shop/collections/FABB8675-712F-4340-872E-2CB63FBE709F.jpg?v=1754910343&width=1500"
+                alt="Collection 1">
+            <h4>Sleeveless Kurtis</h4>
+        </div>
+        <div class="collection-item">
+            <img src="//www.pehrin.com/cdn/shop/collections/FABB8675-712F-4340-872E-2CB63FBE709F.jpg?v=1754910343&width=1500"
+                alt="Collection 2">
+            <h4>Designer Suits</h4>
+        </div>
+        <div class="collection-item">
+            <img src="//www.pehrin.com/cdn/shop/collections/FABB8675-712F-4340-872E-2CB63FBE709F.jpg?v=1754910343&width=1500"
+                alt="Collection 3">
+            <h4>Ethnic Wear</h4>
+        </div>
+        <div class="collection-item">
+            <img src="//www.pehrin.com/cdn/shop/collections/FABB8675-712F-4340-872E-2CB63FBE709F.jpg?v=1754910343&width=1500"
+                alt="Collection 4">
+            <h4>Casual Tops</h4>
+        </div>
     </div>
-    <div class="Collection_image">
-        <img
-            src="//www.pehrin.com/cdn/shop/collections/FABB8675-712F-4340-872E-2CB63FBE709F.jpg?v=1754910343&width=1500">
-        <h4>Sleve-less Kurtis</h4>
-    </div>
-    <div class="Collection_image">
-        <img
-            src="//www.pehrin.com/cdn/shop/collections/FABB8675-712F-4340-872E-2CB63FBE709F.jpg?v=1754910343&width=1500">
-        <h4>Sleve-less Kurtis</h4>
-    </div>
-</div>
+</section>
 
-<div class="Collection_Title">
-    <h3>Men Collections</h3>
-</div>
-<div class="Collection_Men">
-    <div class="Collection_image">
-        <img
-            src="//www.pehrin.com/cdn/shop/collections/FABB8675-712F-4340-872E-2CB63FBE709F.jpg?v=1754910343&width=1500">
-        <h4>Sleve-less Kurtis</h4>
+<!-- Men Collections -->
+<section class="section collections-section bg-light">
+    <div class="section-header">
+        <h3 class="section-title cursive-font">Men Collections</h3>
     </div>
-    <div class="Collection_image">
-        <img
-            src="//www.pehrin.com/cdn/shop/collections/FABB8675-712F-4340-872E-2CB63FBE709F.jpg?v=1754910343&width=1500">
-        <h4>Sleve-less Kurtis</h4>
+    <div class="collection-grid">
+        <div class="collection-item" routerLink="/naina" style="cursor: pointer;">
+            <img src="//www.pehrin.com/cdn/shop/collections/FABB8675-712F-4340-872E-2CB63FBE709F.jpg?v=1754910343&width=1500"
+                alt="Men Collection 1">
+            <h4>Casual Shirts</h4>
+        </div>
+
+        <div class="collection-item" routerLink="/pooh" style="cursor: pointer;">
+            <img src="//www.pehrin.com/cdn/shop/collections/FABB8675-712F-4340-872E-2CB63FBE709F.jpg?v=1754910343&width=1500"
+                alt="Men Collection 2">
+            <h4>Formal Wear</h4>
+        </div>
+
+        <div class="collection-item" routerLink="/geet" style="cursor: pointer;">
+            <img src="//www.pehrin.com/cdn/shop/collections/FABB8675-712F-4340-872E-2CB63FBE709F.jpg?v=1754910343&width=1500"
+                alt="Men Collection 3">
+            <h4>Denim</h4>
+        </div>
+        <div class="collection-item" routerLink="/aisha" style="cursor: pointer;">
+            <img src="//www.pehrin.com/cdn/shop/collections/FABB8675-712F-4340-872E-2CB63FBE709F.jpg?v=1754910343&width=1500"
+                alt="Men Collection 4">
+            <h4>Ethnic Sets</h4>
+        </div>
     </div>
-    <div class="Collection_image">
-        <img
-            src="//www.pehrin.com/cdn/shop/collections/FABB8675-712F-4340-872E-2CB63FBE709F.jpg?v=1754910343&width=1500">
-        <h4>Sleve-less Kurtis</h4>
+</section>
+
+<!-- Lifestyle / Main Character -->
+<section class="section lifestyle-section">
+    <div class="section-header">
+        <h3 class="section-title">Shop To Be The <span class="highlight">Main Character</span></h3>
     </div>
-    <div class="Collection_image">
-        <img
-            src="//www.pehrin.com/cdn/shop/collections/FABB8675-712F-4340-872E-2CB63FBE709F.jpg?v=1754910343&width=1500">
-        <h4>Sleve-less Kurtis</h4>
+    <div class="video-grid">
+        <div class="video-wrapper">
+            <video
+                src="https://www.pehrin.com/cdn/shop/videos/c/vp/17ac1687e6d94ea3b62351f55d0be1f1/17ac1687e6d94ea3b62351f55d0be1f1.HD-1080p-7.2Mbps-49077462.mp4?v=0"
+                autoplay loop muted playsinline></video>
+        </div>
+        <div class="video-wrapper">
+            <video
+                src="https://www.pehrin.com/cdn/shop/videos/c/vp/f9489107fa0244d394c9f600f4b7b1d3/f9489107fa0244d394c9f600f4b7b1d3.HD-1080p-7.2Mbps-49122536.mp4?v=0"
+                autoplay loop muted playsinline></video>
+        </div>
+        <div class="video-wrapper">
+            <video
+                src="https://www.pehrin.com/cdn/shop/videos/c/vp/27362a30a557445c9c05d3fe6c43f4d7/27362a30a557445c9c05d3fe6c43f4d7.HD-1080p-7.2Mbps-49077463.mp4?v=0"
+                autoplay loop muted playsinline></video>
+        </div>
+        <div class="video-wrapper">
+            <video
+                src="https://www.pehrin.com/cdn/shop/videos/c/vp/ed0190dcfbab4455b838c991d3dc68e0/ed0190dcfbab4455b838c991d3dc68e0.HD-1080p-7.2Mbps-49122535.mp4?v=0"
+                autoplay loop muted playsinline></video>
+        </div>
     </div>
-</div>
+</section>
+
+<!-- Image Gallery -->
+<section class="section gallery-section">
+    <div class="section-header">
+        <h3 class="section-title cursive-font">Image Gallery</h3>
+    </div>
+    <div class="gallery-container">
+        <div class="gallery-item item-1">
+            <img src="https://www.pehrin.com/cdn/shop/files/IMG_8485.jpg?v=1749391170" alt="Gallery 1">
+            <div class="caption">Cherry Red</div>
+        </div>
+        <div class="gallery-item item-2">
+            <img src="https://www.pehrin.com/cdn/shop/files/IMG_8485.jpg?v=1749391170" alt="Gallery 2">
+            <div class="caption">Gulnaar Kurti</div>
+        </div>
+        <div class="gallery-item item-3">
+            <img src="https://www.pehrin.com/cdn/shop/files/IMG_8485.jpg?v=1749391170" alt="Gallery 3">
+            <div class="caption">The Neel Shirt</div>
+        </div>
+        <div class="gallery-item item-4">
+            <img src="https://www.pehrin.com/cdn/shop/files/IMG_8485.jpg?v=1749391170" alt="Gallery 4">
+            <div class="caption">Cherry Kurti</div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section (Placeholder) -->
+<section class="section testimonials-section bg-light">
+    <div class="section-header">
+        <h3 class="section-title">What Our <span class="highlight">Customers Say</span></h3>
+    </div>
+    <div class="testimonials-grid">
+        <div class="testimonial-card">
+            <p>"The fabric quality is amazing! Loved the fit."</p>
+            <h5>- Priya S.</h5>
+        </div>
+        <div class="testimonial-card">
+            <p>"Fast delivery and beautiful packaging. Will order again."</p>
+            <h5>- Anjali M.</h5>
+        </div>
+        <div class="testimonial-card">
+            <p>"The best ethnic wear collection I've found online."</p>
+            <h5>- Rohit K.</h5>
+        </div>
+    </div>
+</section>
+
+<!-- New Launch Section -->
+<section class="section launch-section">
+    <div class="launch-content">
+        <h3 class="section-title">New Launch</h3>
+        <div class="launch-card">
+            <img src="https://www.pehrin.com/cdn/shop/files/IMG_8485.jpg?v=1749391170" alt="New Launch">
+            <div class="launch-details">
+                <h4>Summer Breeze Collection</h4>
+                <p>Experience the comfort of pure cotton.</p>
+                <button class="btn btn-dark">Shop Collection</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Follow Us -->
+<section class="section follow-section">
+    <div class="section-header">
+        <h3 class="section-title">Follow us on <span class="highlight">@pehrin_</span></h3>
+    </div>
+    <div class="social-grid">
+        <!-- Add social icons or feed placeholders here -->
+        <i class="fab fa-instagram"></i>
+        <i class="fab fa-facebook"></i>
+        <i class="fab fa-pinterest"></i>
+    </div>
+</section>

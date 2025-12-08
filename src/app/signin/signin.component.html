@@ -1,24 +1,39 @@
-<!-- STEP 1 -->
-<div class="Email">
-    <div class="Step_1" *ngIf="step === 1">
-        <h2>Enter Email</h2>
-        <input type="email" [(ngModel)]="email" alt="Enter A Email" required>
-        <button class="Next" (click)="nextStep()">Next</button>
+<div class="signin-wrapper">
+    <div class="signin-card">
+        <div class="signin-header">
+            <h2>Create Account</h2>
+            <p>Sign up to get started</p>
+        </div>
+
+        <form (ngSubmit)="submit()">
+
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" [(ngModel)]="username" name="username" placeholder="Choose a username"
+                    required />
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" [(ngModel)]="email" name="email" placeholder="Enter your email"
+                    required />
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" [(ngModel)]="password" name="password"
+                    placeholder="Create a password" required />
+            </div>
+
+            <button type="submit" class="signin-btn">Sign Up</button>
+
+            <div *ngIf="errorMessage" class="error-message">
+                {{ errorMessage }}
+            </div>
+        </form>
+
+        <div class="signin-footer">
+            <p>Already have an account? <a routerLink="/login">Log in</a></p>
+        </div>
     </div>
-</div>
-
-<!-- STEP 2 -->
-<div *ngIf="step === 2">
-    <h2>Enter Password</h2>
-    <input type="password" [(ngModel)]="password" required>
-    <button (click)="previousStep()">Back</button>
-    <button (click)="nextStep()">Next</button>
-</div>
-
-<!-- STEP 3 -->
-<div *ngIf="step === 3">
-    <h2>Choose Username</h2>
-    <input type="text" [(ngModel)]="username" required>
-    <button (click)="previousStep()">Back</button>
-    <button (click)="submit()">Create Account</button>
 </div>
