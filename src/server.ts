@@ -1,3 +1,6 @@
+// Disable SSL verification for local dev (self-signed certs)
+process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
+
 import {
   AngularNodeAppEngine,
   createNodeRequestHandler,

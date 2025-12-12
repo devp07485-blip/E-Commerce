@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { isPlatformServer } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -9,11 +10,14 @@ import { tap } from 'rxjs/operators';
 export class ProductService {
 
   private cache: any[] | null = null;
+  private apiWomenList: string;
+  private apiMenList: string;
 
-  private apiWomenList = 'http://localhost:5000/api/products';
-  private apiMenList = 'http://localhost:5000/api/products_men';
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, @Inject(PLATFORM_ID) private platformId: Object) {
+    const baseUrl = isPlatformServer(this.platformId) ? 'http://localhost:5000' : '';
+    this.apiWomenList = `${baseUrl}/api/products`;
+    this.apiMenList = `${baseUrl}/api/products_men`;
+  }
 
   // WOMEN LIST
   getProducts() {

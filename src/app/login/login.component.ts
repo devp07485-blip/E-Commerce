@@ -33,7 +33,7 @@ export class LoginComponent {
       password: this.password
     };
 
-    this.http.post('http://localhost:5000/api/login', body)
+    this.http.post('/api/login', body)
       .subscribe({
         next: (res: any) => {
           this.loading = false;

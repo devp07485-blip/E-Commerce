@@ -35,7 +35,7 @@ export class SigninComponent {
     }
 
     // 1) CREATE ACCOUNT
-    this.http.post('http://localhost:5000/api/signup', {
+    this.http.post('/api/signup', {
       email: this.email,
       username: this.username,
       password: this.password

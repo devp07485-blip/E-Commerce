@@ -2,10 +2,16 @@ const fs = require('fs');
 const express = require('express');
 const cors = require('cors');
 const app = express();
+const jwt = require('jsonwebtoken'); // Import JWT
+const SECRET_KEY = "my_super_secret_key_123"; // In production, use environment variable
 const port = 5000;
 const USERS_FILE = './users.json';
 
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:4200',
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
+}));
 app.use(express.json());
 
 // Helper to load users
@@ -29,7 +35,21 @@ function saveUsers() {
     }
 }
 
-// MASTER PRODUCT LIST
+
+
+// AUTH MIDDLEWARE
+function authenticateToken(req, res, next) {
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1]; // Bearer TOKEN
+
+    if (!token) return res.sendStatus(401); // Unauthorized
+
+    jwt.verify(token, SECRET_KEY, (err, user) => {
+        if (err) return res.sendStatus(403); // Forbidden
+        req.user = user;
+        next();
+    });
+}
 const products = [
     {
         id: 1,
@@ -220,17 +240,26 @@ app.post('/api/login', (req, res) => {
     const user = users.find(u => u.email === email && u.password === password);
 
     if (user) {
-        return res.json({ message: "Login successful", username: user.username, email: user.email });
+        // Generate Token
+        const token = jwt.sign({ email: user.email, username: user.username }, SECRET_KEY, { expiresIn: '1h' });
+        return res.json({ message: "Login successful", token, username: user.username, email: user.email });
     }
 
     if (email === "admin@gmail.com" && password === "123456") {
-        return res.json({ message: "Login successful", username: "Admin", email: "admin@gmail.com" });
+        const token = jwt.sign({ email: "admin@gmail.com", username: "Admin" }, SECRET_KEY, { expiresIn: '1h' });
+        return res.json({ message: "Login successful", token, username: "Admin", email: "admin@gmail.com" });
     }
 
-    res.status(401).json({ message: "Please Valid Username & Password Enter It" });
+    res.status(401).json({ message: "Invalid Username or Password" });
 });
 
-// START SERVER
+// PROFILE (Protected)
+app.get('/api/profile', authenticateToken, (req, res) => {
+    res.json({ message: "This is a protected profile", user: req.user });
+});
+
+
+// START SERVER (HTTP)
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });

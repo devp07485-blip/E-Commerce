@@ -355,7 +355,7 @@
 
 .related-card {
     cursor: pointer;
-    group: hover;
+    cursor: hover;
 }
 
 .img-wrapper {
