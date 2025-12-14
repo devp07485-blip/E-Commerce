@@ -144,3 +144,26 @@
         align-items: flex-start;
     }
 }
+
+.phone-input-group {
+    display: flex;
+    gap: 10px;
+}
+
+.country-select {
+    width: 35%;
+    /* Adjust width as needed */
+    padding: 0.75rem 1rem;
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+    font-size: 1rem;
+    background-color: #fcfcfc;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.country-select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+    background-color: #fff;
+}

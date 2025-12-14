@@ -1,7 +1,6 @@
-import { Component, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, Inject, PLATFORM_ID, signal, computed } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
-import { signal } from '@angular/core';
+import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -12,10 +11,13 @@ import { signal } from '@angular/core';
 })
 export class App {
   title = signal('food');
+  username = signal('');
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+  constructor(
+    private router: Router,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {
     if (isPlatformBrowser(this.platformId)) {
-      // Safe to use window here
       window.addEventListener('error', (e: ErrorEvent) => {
         console.log('Window error:', e.error);
       });
@@ -25,4 +27,9 @@ export class App {
       });
     }
   }
+
+  hideNavbar = computed(() => {
+    const url = this.router.url;
+    return url.includes('login') || url.includes('signup');
+  });
 }

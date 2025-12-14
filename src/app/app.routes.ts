@@ -11,6 +11,7 @@ import { AllWomenComponent } from './Type_Woman_Product/All_Women/all-women/all-
 import { AishaComponent } from './Type_Woman_Product/Aisha/aisha/aisha.component';
 import { GeetComponent } from './Type_Woman_Product/Geet/geet/geet.component';
 import { OurStoryComponent } from './our-story/our-story.component';
+import { AccountDetailsComponent } from './account-details/account-details.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -29,6 +30,7 @@ export const routes: Routes = [
     { path: 'signin', component: SigninComponent },
     { path: 'product/:id', loadComponent: () => import('./product-details/product-details.component').then(m => m.ProductDetailsComponent) },
     { path: 'cart', component: CartComponent },
+    { path: 'account-details', component: AccountDetailsComponent },
 
     { path: '**', redirectTo: 'home' }   // ALWAYS LAST
 ];

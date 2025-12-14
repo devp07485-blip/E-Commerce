@@ -62,6 +62,7 @@ export class HomeComponent implements OnInit {
   private loadLatestWomen(): void {
     this.homeService.getWomenProducts().subscribe({
       next: (res: Product[]) => {
+        console.log('HomeComponent: Received women products:', res);
         this.latestWomen = res;
         this.productCache.womenProducts = res; // save to cache
       },
@@ -72,6 +73,7 @@ export class HomeComponent implements OnInit {
   private loadLatestMen(): void {
     this.homeService.getMenProducts().subscribe({
       next: (res: Product[]) => {
+        console.log('HomeComponent: Received men products:', res);
         this.latestMen = res;
         this.productCache.menProducts = res; // save to cache
       },

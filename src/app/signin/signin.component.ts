@@ -16,7 +16,29 @@ export class SigninComponent {
   email = '';
   password = '';
   username = '';
+  dropdownValue = '';
+  phone = '';
   errorMessage = '';
+
+  phonePlaceholder = 'Enter your phone number';
+  phonePattern = '[0-9]{10}';
+
+  countryFormats: { [key: string]: { placeholder: string, pattern: string } } = {
+    '+91': { placeholder: '12345-67890', pattern: '[0-9]{10}' },
+    '+1': { placeholder: '123-456-7890', pattern: '[0-9]{10}' },
+    '+44': { placeholder: '12345 678901', pattern: '[0-9]{11}' }
+  };
+
+  onCountryChange() {
+    const format = this.countryFormats[this.dropdownValue];
+    if (format) {
+      this.phonePlaceholder = format.placeholder;
+      this.phonePattern = format.pattern;
+    } else {
+      this.phonePlaceholder = 'Enter your phone number';
+      this.phonePattern = '[0-9]{10}';
+    }
+  }
 
   constructor(private router: Router, private http: HttpClient) { }
 
@@ -38,7 +60,8 @@ export class SigninComponent {
     this.http.post('/api/signup', {
       email: this.email,
       username: this.username,
-      password: this.password
+      password: this.password,
+      phone: this.dropdownValue + this.phone
     }).subscribe({
       next: () => {
         // Redirect to Login Page as requested

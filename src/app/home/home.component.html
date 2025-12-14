@@ -51,7 +51,7 @@
         <h3 class="section-title">Latest Arrivals <span class="highlight">Women</span></h3>
         <div class="section-line"></div>
     </div>
-    <div class="product-grid">
+    <div class="product-grid" *ngIf="latestWomen.length > 0; else noWomen">
         <div class="product-card" *ngFor="let p of latestWomen">
             <div class="image-container">
                 <img [src]="p.imageUrl" [alt]="p.name" class="product-img" />
@@ -66,6 +66,11 @@
         </div>
     </div>
 </section>
+<ng-template #noWomen>
+    <div class="text-center p-5">
+        <p>No women products found. Please check API connection.</p>
+    </div>
+</ng-template>
 
 <!-- Latest Arrivals - Men -->
 <section class="section latest-section bg-light">
@@ -73,7 +78,7 @@
         <h3 class="section-title">Latest <span class="highlight">Men</span></h3>
         <div class="section-line"></div>
     </div>
-    <div class="product-grid">
+    <div class="product-grid" *ngIf="latestMen.length > 0; else noMen">
         <div class="product-card" *ngFor="let m of latestMen">
             <div class="image-container">
                 <img [src]="m.imageUrl" [alt]="m.name" class="product-img" />
@@ -88,6 +93,11 @@
         </div>
     </div>
 </section>
+<ng-template #noMen>
+    <div class="text-center p-5">
+        <p>No men products found. Please check API connection.</p>
+    </div>
+</ng-template>
 
 <!-- Women Collections -->
 <section class="section collections-section">
